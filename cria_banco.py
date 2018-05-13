@@ -1,6 +1,7 @@
-from tabelas import Usuario, pg_db
 
-lista_de_tabelas = [ Usuario, ]
+from tabelas import Pessoa, db
 
-pg_db.connect()
-pg_db.create_tables(lista_de_tabelas)
+lista_de_tabelas = [ Pessoa, ]
+
+db.connect()
+db.create_tables(lista_de_tabelas)
