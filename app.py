@@ -1,10 +1,11 @@
 #encoding: utf-8
+import os
 from flask import Flask, render_template, request, redirect
+from werkzeug.utils import secure_filename
 from playhouse.shortcuts import  model_to_dict
 from tabelas import Pessoa
 
 app = Flask(__name__)
-
 
 def processa_upload(name_do_input):
 	if name_do_input not in request.files:
@@ -25,6 +26,11 @@ def index():
 		
 @app.route("/remover/<id>/")
 def remover(id):
+	pessoa = Pessoa.get_by_id(id)
+	caminho_foto = pessoa.foto_url[1:] # [:1] remove o primeiro caracter da url, ou seja, remove o "/" inicial
+	# deleta foto do sistema de arquivo
+	os.unlink(caminho_foto)
+	# deleta do banco
 	Pessoa.delete().where(Pessoa.id==id).execute()
 	return redirect("/")
 
@@ -50,6 +56,7 @@ def cadastrar():
 			return render_template("cadastrar.html", msg_error = error,	form = request.form.to_dict())
 	else:
 		return render_template("cadastrar.html", form={})
+
 		
 @app.route("/editar/<id>/",methods=["GET","POST"])
 def atualizar(id):

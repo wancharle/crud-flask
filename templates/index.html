@@ -13,7 +13,7 @@
 </head>
  <body>
  
-        <div style="margin:0 auto;width:480px;">
+        <div style="margin:0 auto;width:720px;">
         	<h2>Pessoas Cadastradas no sistema</h2>
             <table>
              <tr>
@@ -22,6 +22,7 @@
 			   <th>USUARIO</th>
                <th>EMAIL</th>
 			   <th>BIO</th>
+			   <th>FOTO</th>
                <th>AÇÕES</th>
 			   
             </tr>
@@ -32,6 +33,7 @@
 				 <td>{{ pessoa.usuario}}</td>
 				 <td>{{ pessoa.email}}</td>
 				 <td>{{ pessoa.biografia}}</td>
+				 <td><img height="49px" src="{{ pessoa.foto_url }}" /></td>
 				 <td>
 					<a href="/editar/{{pessoa.id}}/">editar</a> 
 					| 
