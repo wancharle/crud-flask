@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <title>Cadastro de Pessoas</title>
+    <meta charset="utf-8">
+	<style>
+		body { margin: 0 20%; }
+		label { width: 100px; display: inline-block;}
+	</style>
+  </head>
+  <body>
+  
+    <h2>Bem vindo!</h2>
+	
+	<p>Informe os dados da pessoa que deseja cadstrar</p>
+	
+	<form method="POST" action="/cadastrar/">
+		<p><label>Nome: </label><input type="text" name="nome"></p>
+		<p><label>Telefone: </label><input type="text" name="telefone"></p>
+		<input type="submit" value="enviar" />
+	</form>
+	
+	</body>
+</html>
